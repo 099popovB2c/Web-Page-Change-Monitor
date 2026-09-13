@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Web Page Change Monitor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Web Page Change Monitor</h1>
+    <p class="subtitle">Watch a page and get notified when something changes.</p>
+
+    <section class="add-card">
+      <div class="eyebrow">Current page</div>
+      <div id="currentTitle" class="current-title">Loading…</div>
+      <div id="currentUrl" class="current-url"></div>
+
+      <label>
+        Monitor mode
+        <select id="mode">
+          <option value="page">Any page content change</option>
+          <option value="phrase">Text appears / disappears</option>
+        </select>
+      </label>
+
+      <label id="phraseWrap" class="hidden">
+        Text to watch
+        <input id="phrase" type="text" maxlength="200" placeholder="e.g. In stock">
+      </label>
+
+      <label>
+        Check every
+        <select id="interval">
+          <option value="5">5 minutes</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </label>
+
+      <button id="addWatch" class="primary full">Monitor This Page</button>
+      <p class="hint">Open tabs are checked from the rendered page. Closed public pages use a background fetch.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <strong>Monitored pages</strong>
+        <span id="watchCount">0</span>
+      </div>
+      <div id="watchList" class="watch-list"></div>
+    </section>
+
+    <p id="status" class="status">Changes are stored locally.</p>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
